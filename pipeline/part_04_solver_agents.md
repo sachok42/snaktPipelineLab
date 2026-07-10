@@ -1,6 +1,6 @@
 # Step 3 — Testing Strategy and Solver Dispatch
 
-**Agent role:** Amara (Testing Strategist)  **Model:** Sonnet
+**Agent role:** Testing Strategist  **Model:** Sonnet
 
 ## Testing Method Catalog
 
@@ -79,17 +79,17 @@ Solver dispatch is two-phase:
 - **Phase 2:** run method `M` only after at least one passing verified baseline exists from
   Phase 1.
 
-For each applicable method, Amara spawns **2–3 independent solver agents** powered by
+For each applicable method, the Testing Strategist spawns **2–3 independent solver agents** powered by
 different models where possible. The first solver per method runs on Opus; the second and
-third run on Sonnet. Each method has its own named trio:
+third run on Sonnet. Each method has its own set of solver slots:
 
 | Method | 1st (Opus) | 2nd (Sonnet) | 3rd (Sonnet) |
 |--------|-----------|-------------|-------------|
-| V — VerifyThis | Aleksei | Selin | Nikos |
-| A — Feature Contract | Finn | Priya | Lior |
-| B — Community Cases | Ingrid | Jae | Mei |
-| N — Negative Tests | Tariq | Zara | Mateus |
-| M — Mutation Testing | Sofía | Kwame | Linh |
+| V — VerifyThis | `solver-v-1` | `solver-v-2` | `solver-v-3` |
+| A — Feature Contract | `solver-a-1` | `solver-a-2` | `solver-a-3` |
+| B — Community Cases | `solver-b-1` | `solver-b-2` | `solver-b-3` |
+| N — Negative Tests | `solver-n-1` | `solver-n-2` | `solver-n-3` |
+| M — Mutation Testing | `solver-m-1` | `solver-m-2` | `solver-m-3` |
 
 Each solver receives:
 
@@ -156,9 +156,9 @@ Severity definitions:
 + handoff record (`handoffs/<feature-id>-step-3.md`)
 + completion marker (`complete/<feature-id>-step-3.md`).
 
-**Completion marker ownership:** Soren writes `complete/<feature-id>-step-3.md`, not Amara.
-Amara's own work is done when the strategy document is written and solvers are dispatched,
+**Completion marker ownership:** The Orchestrator writes `complete/<feature-id>-step-3.md`, not the Testing Strategist.
+The Testing Strategist's own work is done when the strategy document is written and solvers are dispatched,
 but Step 3 is not complete until: (a) all Phase 1 solvers (V/A/B/N) have each written their
 solver report, and (b) if Method M was applicable, all Phase 2 solvers have also written their
-reports. Soren monitors for all expected `testing/<feature-id>-solver-*.md` files and writes
+reports. The Orchestrator monitors for all expected `testing/<feature-id>-solver-*.md` files and writes
 the step-3 completion marker only when every dispatched solver has delivered its report.

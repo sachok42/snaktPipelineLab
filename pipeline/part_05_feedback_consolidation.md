@@ -1,6 +1,6 @@
 # Step 4 — Feedback Consolidation
 
-**Agent role:** Dawa (Synthesizer)  **Model:** Sonnet
+**Agent role:** Synthesizer  **Model:** Sonnet
 
 Reads all structured solver reports from Step 3 (grouped by testing method) and produces a
 single consolidated feedback document. Reports are labelled by method and solver index

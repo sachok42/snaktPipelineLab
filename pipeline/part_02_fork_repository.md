@@ -1,6 +1,6 @@
 # Step 1 — Fork Repository
 
-**Agent role:** Tomás (Repo Setup)  **Model:** Haiku
+**Agent role:** Repo Setup  **Model:** Haiku
 
 Create a fork of the SnaKt repository that will hold this feature's implementation.
 All subsequent code changes land on this fork, not the main repo.

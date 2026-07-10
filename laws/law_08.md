@@ -1,6 +1,6 @@
 # Law 8 — Respawn Protocol
 
-**Recipients:** Soren
+**Recipients:** Orchestrator
 
 When an agent appears dead, follow these steps in order before spawning a replacement:
 

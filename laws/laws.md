@@ -234,36 +234,36 @@ being asked. Both parties append to the same file using labeled turns.
 
 ### Canonical role slugs
 
-| Step | Name | Role | Slug |
-|------|------|------|------|
-| — | Soren | Orchestrator | `orchestrator` |
-| 0 | Mira | Planner | `planner` |
-| 1 | Tomás | Repo Setup | `repo-setup` |
-| 2 | Yuki | Implementer | `implementer` |
-| 3 — strategist | Amara | Testing Strategist | `strategist` |
-| 3 — V-1 | Aleksei | Solver V first | `solver-v-1` |
-| 3 — V-2 | Selin | Solver V second | `solver-v-2` |
-| 3 — V-3 | Nikos | Solver V third | `solver-v-3` |
-| 3 — A-1 | Finn | Solver A first | `solver-a-1` |
-| 3 — A-2 | Priya | Solver A second | `solver-a-2` |
-| 3 — A-3 | Lior | Solver A third | `solver-a-3` |
-| 3 — B-1 | Ingrid | Solver B first | `solver-b-1` |
-| 3 — B-2 | Jae | Solver B second | `solver-b-2` |
-| 3 — B-3 | Mei | Solver B third | `solver-b-3` |
-| 3 — N-1 | Tariq | Solver N first | `solver-n-1` |
-| 3 — N-2 | Zara | Solver N second | `solver-n-2` |
-| 3 — N-3 | Mateus | Solver N third | `solver-n-3` |
-| 3 — M-1 | Sofía | Solver M first | `solver-m-1` |
-| 3 — M-2 | Kwame | Solver M second | `solver-m-2` |
-| 3 — M-3 | Linh | Solver M third | `solver-m-3` |
-| 4 | Dawa | Synthesizer | `synthesizer` |
-| 5 | Ren | Debugger (per iteration) | `debugger-iter-<N>` e.g. `debugger-iter-1` |
-| 6 | Valentina | Comparator (per iteration) | `comparator-iter-<N>` e.g. `comparator-iter-1` |
-| 7 | Marcus | Reviewer | `reviewer` |
-| 8 | Ebele | Meta-Reviewer | `meta-reviewer` |
+| Step | Role | Slug |
+|------|------|------|
+| — | Orchestrator | `orchestrator` |
+| 0 | Planner | `planner` |
+| 1 | Repo Setup | `repo-setup` |
+| 2 | Implementer | `implementer` |
+| 3 — strategist | Testing Strategist | `strategist` |
+| 3 — V-1 | Solver V first | `solver-v-1` |
+| 3 — V-2 | Solver V second | `solver-v-2` |
+| 3 — V-3 | Solver V third | `solver-v-3` |
+| 3 — A-1 | Solver A first | `solver-a-1` |
+| 3 — A-2 | Solver A second | `solver-a-2` |
+| 3 — A-3 | Solver A third | `solver-a-3` |
+| 3 — B-1 | Solver B first | `solver-b-1` |
+| 3 — B-2 | Solver B second | `solver-b-2` |
+| 3 — B-3 | Solver B third | `solver-b-3` |
+| 3 — N-1 | Solver N first | `solver-n-1` |
+| 3 — N-2 | Solver N second | `solver-n-2` |
+| 3 — N-3 | Solver N third | `solver-n-3` |
+| 3 — M-1 | Solver M first | `solver-m-1` |
+| 3 — M-2 | Solver M second | `solver-m-2` |
+| 3 — M-3 | Solver M third | `solver-m-3` |
+| 4 | Synthesizer | `synthesizer` |
+| 5 | Debugger (per iteration) | `debugger-iter-<N>` e.g. `debugger-iter-1` |
+| 6 | Comparator (per iteration) | `comparator-iter-<N>` e.g. `comparator-iter-1` |
+| 7 | Reviewer | `reviewer` |
+| 8 | Meta-Reviewer | `meta-reviewer` |
 
 Agents must use these slugs exactly. Inventing alternative names produces files that other
-agents and Soren cannot reliably identify.
+agents and the Orchestrator cannot reliably identify.
 
 ### Message format
 

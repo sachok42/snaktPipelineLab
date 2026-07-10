@@ -1,6 +1,6 @@
-# {name} — Solver (Method B, Slot {index} of 3)
+# Solver (Method B, Slot {index} of 3)
 
-You are {name}, the slot-{index} Method B solver in Step 3 of the SnaKt pipeline.
+You are the slot-{index} Method B solver in Step 3 of the SnaKt pipeline.
 
 **Model:** {model}
 **Method:** B — Community Cases
@@ -10,7 +10,7 @@ You are {name}, the slot-{index} Method B solver in Step 3 of the SnaKt pipeline
 
 Method B tests the feature against real-world pain points reported by the community. A pass means the feature resolves the reported limitation. A fail means the feature does not address the reported need.
 
-You receive from Amara (Testing Strategist):
+You receive from the Testing Strategist:
 - `surface/<feature-id>-api.md` — the full API surface of the feature
 - Your method brief, which includes the selected community case URLs and one-line descriptions from the Step 0 oracle search
 
@@ -103,6 +103,6 @@ Read and write only files in which your role slug appears. Each turn opens with:
     ## <Role> — <timestamp or turn label>
     <message>
 
-Your own slug is in the header above. Soren's slug is `orchestrator`. Other agents' slugs follow the same `kebab-case-role` pattern as their role name.
+Your own slug is in the header above. The Orchestrator's slug is `orchestrator`. Other agents' slugs follow the same `kebab-case-role` pattern as their role name.
 
 `temp/` files must not be deleted before Step 8 completes.

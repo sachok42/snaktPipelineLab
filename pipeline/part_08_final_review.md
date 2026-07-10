@@ -1,6 +1,6 @@
 # Step 7 — Final Review Report
 
-**Agent role:** Marcus (Reviewer)  **Model:** Sonnet
+**Agent role:** Reviewer  **Model:** Sonnet
 
 Produces a self-contained report for the implemented feature covering:
 - **What was implemented** — API surface, annotations, DSL additions

@@ -234,36 +234,36 @@ being asked. Both parties append to the same file using labeled turns.
 
 ### Canonical role slugs
 
-| Step | Name | Role | Slug |
-|------|------|------|------|
-| — | Soren | Orchestrator | `orchestrator` |
-| 0 | Mira | Planner | `planner` |
-| 1 | Tomás | Repo Setup | `repo-setup` |
-| 2 | Yuki | Implementer | `implementer` |
-| 3 — strategist | Amara | Testing Strategist | `strategist` |
-| 3 — V-1 | Aleksei | Solver V first | `solver-v-1` |
-| 3 — V-2 | Selin | Solver V second | `solver-v-2` |
-| 3 — V-3 | Nikos | Solver V third | `solver-v-3` |
-| 3 — A-1 | Finn | Solver A first | `solver-a-1` |
-| 3 — A-2 | Priya | Solver A second | `solver-a-2` |
-| 3 — A-3 | Lior | Solver A third | `solver-a-3` |
-| 3 — B-1 | Ingrid | Solver B first | `solver-b-1` |
-| 3 — B-2 | Jae | Solver B second | `solver-b-2` |
-| 3 — B-3 | Mei | Solver B third | `solver-b-3` |
-| 3 — N-1 | Tariq | Solver N first | `solver-n-1` |
-| 3 — N-2 | Zara | Solver N second | `solver-n-2` |
-| 3 — N-3 | Mateus | Solver N third | `solver-n-3` |
-| 3 — M-1 | Sofía | Solver M first | `solver-m-1` |
-| 3 — M-2 | Kwame | Solver M second | `solver-m-2` |
-| 3 — M-3 | Linh | Solver M third | `solver-m-3` |
-| 4 | Dawa | Synthesizer | `synthesizer` |
-| 5 | Ren | Debugger (per iteration) | `debugger-iter-<N>` e.g. `debugger-iter-1` |
-| 6 | Valentina | Comparator (per iteration) | `comparator-iter-<N>` e.g. `comparator-iter-1` |
-| 7 | Marcus | Reviewer | `reviewer` |
-| 8 | Ebele | Meta-Reviewer | `meta-reviewer` |
+| Step | Role | Slug |
+|------|------|------|
+| — | Orchestrator | `orchestrator` |
+| 0 | Planner | `planner` |
+| 1 | Repo Setup | `repo-setup` |
+| 2 | Implementer | `implementer` |
+| 3 — strategist | Testing Strategist | `strategist` |
+| 3 — V-1 | Solver V first | `solver-v-1` |
+| 3 — V-2 | Solver V second | `solver-v-2` |
+| 3 — V-3 | Solver V third | `solver-v-3` |
+| 3 — A-1 | Solver A first | `solver-a-1` |
+| 3 — A-2 | Solver A second | `solver-a-2` |
+| 3 — A-3 | Solver A third | `solver-a-3` |
+| 3 — B-1 | Solver B first | `solver-b-1` |
+| 3 — B-2 | Solver B second | `solver-b-2` |
+| 3 — B-3 | Solver B third | `solver-b-3` |
+| 3 — N-1 | Solver N first | `solver-n-1` |
+| 3 — N-2 | Solver N second | `solver-n-2` |
+| 3 — N-3 | Solver N third | `solver-n-3` |
+| 3 — M-1 | Solver M first | `solver-m-1` |
+| 3 — M-2 | Solver M second | `solver-m-2` |
+| 3 — M-3 | Solver M third | `solver-m-3` |
+| 4 | Synthesizer | `synthesizer` |
+| 5 | Debugger (per iteration) | `debugger-iter-<N>` e.g. `debugger-iter-1` |
+| 6 | Comparator (per iteration) | `comparator-iter-<N>` e.g. `comparator-iter-1` |
+| 7 | Reviewer | `reviewer` |
+| 8 | Meta-Reviewer | `meta-reviewer` |
 
 Agents must use these slugs exactly. Inventing alternative names produces files that other
-agents and Soren cannot reliably identify.
+agents and the Orchestrator cannot reliably identify.
 
 ### Message format
 
@@ -335,9 +335,9 @@ Step 8 → pipeline meta-review (raw transcripts only, urgency-tagged proposals)
 
 ## Runtime Model
 
-**Soren** (the Orchestrator) is the head LLM agent. Soren is responsible for spawning worker
+**The Orchestrator** is the head LLM agent. The Orchestrator is responsible for spawning worker
 LLM agents, tracking their handoffs, enforcing laws, and deciding whether to continue, pause,
-salvage, or respawn. The laws are operational instructions for Soren, not requirements for a
+salvage, or respawn. The laws are operational instructions for the Orchestrator, not requirements for a
 separate executable harness unless the operator provides one.
 
 ---
@@ -357,23 +357,23 @@ and the final report must state:
 Each step runs on a designated model tier. Using a heavier model than assigned is wasteful;
 using a lighter model than assigned is a briefing violation.
 
-| Step | Name | Role | Tier | Rationale |
-|------|------|------|------|-----------|
-| — | Soren | Orchestrator | — | Head agent; spawns, tracks, enforces |
-| 0 | Mira | Planner | Haiku | Clarification pass + oracle search + simple selection/decomposition |
-| 1 | Tomás | Repo Setup | Haiku | Mechanical — fork and record a URL |
-| 2 | Yuki | Implementer | Opus | Hard compiler/plugin generation |
-| 3 | Amara | Testing Strategist | Sonnet | Analysis + dispatch decisions |
-| 3 | *(method-specific)* | Solver (first per method) | Opus | Best chance of a correct baseline |
-| 3 | *(method-specific)* | Solver (second per method) | Sonnet | Find what Opus missed — not repeat it |
-| 3 | *(method-specific)* | Solver (third per method) | Sonnet | Adversarial third perspective |
-| 4 | Dawa | Synthesizer | Sonnet | Structured aggregation of solver reports |
-| 5 | Ren | Debugger | Sonnet | Targeted fixes from a defined issue list |
-| 6 | Valentina | Comparator | Sonnet | Comparison judgment + binary gate |
-| 7 | Marcus | Reviewer | Sonnet | Report writing from known artifacts |
-| 8 | Ebele | Meta-Reviewer | Opus | Deep judgment over all evidence |
+| Step | Role | Tier | Rationale |
+|------|------|------|-----------|
+| — | Orchestrator | — | Head agent; spawns, tracks, enforces |
+| 0 | Planner | Haiku | Clarification pass + oracle search + simple selection/decomposition |
+| 1 | Repo Setup | Haiku | Mechanical — fork and record a URL |
+| 2 | Implementer | Opus | Hard compiler/plugin generation |
+| 3 | Testing Strategist | Sonnet | Analysis + dispatch decisions |
+| 3 | Solver (first per method) | Opus | Best chance of a correct baseline |
+| 3 | Solver (second per method) | Sonnet | Find what Opus missed — not repeat it |
+| 3 | Solver (third per method) | Sonnet | Adversarial third perspective |
+| 4 | Synthesizer | Sonnet | Structured aggregation of solver reports |
+| 5 | Debugger | Sonnet | Targeted fixes from a defined issue list |
+| 6 | Comparator | Sonnet | Comparison judgment + binary gate |
+| 7 | Reviewer | Sonnet | Report writing from known artifacts |
+| 8 | Meta-Reviewer | Opus | Deep judgment over all evidence |
 
-Solver names vary by method (V, A, B, N, M) and slot index. See the canonical slug table in Law 17 for the complete roster.
+Solver slugs vary by method (V, A, B, N, M) and slot index. See the canonical slug table in Law 17 for the complete roster.
 
 ---
 
@@ -464,7 +464,7 @@ are recorded in `intake/<feature-id>-clarifications.md`.
 
 # Step 0 — Feature Selection
 
-**Agent role:** Mira (Planner)  **Model:** Haiku
+**Agent role:** Planner  **Model:** Haiku
 
 Before starting, verify that the Orchestrator has provided an artifact repository root
 initialised by `tools/artifacts.py` and a repository context checked by the Repository
@@ -536,7 +536,7 @@ contract in real usage patterns.
 
 # Step 1 — Fork Repository
 
-**Agent role:** Tomás (Repo Setup)  **Model:** Haiku
+**Agent role:** Repo Setup  **Model:** Haiku
 
 Create a fork of the SnaKt repository that will hold this feature's implementation.
 All subsequent code changes land on this fork, not the main repo.
@@ -565,7 +565,7 @@ python tools/artifacts.py validate --root "<artifact-repo-path>" --feature-repo 
 
 # Step 2 — Implement the Feature
 
-**Agent role:** Yuki (Implementer)  **Model:** Opus
+**Agent role:** Implementer  **Model:** Opus
 
 Implement the feature on the fork. This includes:
 - Compiler/plugin changes inside SnaKt as needed
@@ -582,7 +582,7 @@ repository at `surface/<feature-id>-api.md`. It must enumerate:
 - Every public function or DSL entry point added, with its signature
 - Any compiler/plugin behavior changes visible to callers
 
-This document is the authoritative input for Amara's (Testing Strategist) solver dispatch
+This document is the authoritative input for the Testing Strategist's solver dispatch
 in Step 3. Solvers must not be briefed without it.
 
 **Output:** Working implementation on the fork branch + `surface/<feature-id>-api.md`
@@ -593,7 +593,7 @@ in Step 3. Solvers must not be briefed without it.
 
 # Step 3 — Testing Strategy and Solver Dispatch
 
-**Agent role:** Amara (Testing Strategist)  **Model:** Sonnet
+**Agent role:** Testing Strategist  **Model:** Sonnet
 
 ## Testing Method Catalog
 
@@ -672,17 +672,17 @@ Solver dispatch is two-phase:
 - **Phase 2:** run method `M` only after at least one passing verified baseline exists from
   Phase 1.
 
-For each applicable method, Amara spawns **2–3 independent solver agents** powered by
+For each applicable method, the Testing Strategist spawns **2–3 independent solver agents** powered by
 different models where possible. The first solver per method runs on Opus; the second and
-third run on Sonnet. Each method has its own named trio:
+third run on Sonnet. Each method has its own set of solver slots:
 
 | Method | 1st (Opus) | 2nd (Sonnet) | 3rd (Sonnet) |
 |--------|-----------|-------------|-------------|
-| V — VerifyThis | Aleksei | Selin | Nikos |
-| A — Feature Contract | Finn | Priya | Lior |
-| B — Community Cases | Ingrid | Jae | Mei |
-| N — Negative Tests | Tariq | Zara | Mateus |
-| M — Mutation Testing | Sofía | Kwame | Linh |
+| V — VerifyThis | `solver-v-1` | `solver-v-2` | `solver-v-3` |
+| A — Feature Contract | `solver-a-1` | `solver-a-2` | `solver-a-3` |
+| B — Community Cases | `solver-b-1` | `solver-b-2` | `solver-b-3` |
+| N — Negative Tests | `solver-n-1` | `solver-n-2` | `solver-n-3` |
+| M — Mutation Testing | `solver-m-1` | `solver-m-2` | `solver-m-3` |
 
 Each solver receives:
 
@@ -749,18 +749,18 @@ Severity definitions:
 + handoff record (`handoffs/<feature-id>-step-3.md`)
 + completion marker (`complete/<feature-id>-step-3.md`).
 
-**Completion marker ownership:** Soren writes `complete/<feature-id>-step-3.md`, not Amara.
-Amara's own work is done when the strategy document is written and solvers are dispatched,
+**Completion marker ownership:** The Orchestrator writes `complete/<feature-id>-step-3.md`, not the Testing Strategist.
+The Testing Strategist's own work is done when the strategy document is written and solvers are dispatched,
 but Step 3 is not complete until: (a) all Phase 1 solvers (V/A/B/N) have each written their
 solver report, and (b) if Method M was applicable, all Phase 2 solvers have also written their
-reports. Soren monitors for all expected `testing/<feature-id>-solver-*.md` files and writes
+reports. The Orchestrator monitors for all expected `testing/<feature-id>-solver-*.md` files and writes
 the step-3 completion marker only when every dispatched solver has delivered its report.
 
 ---
 
 # Step 4 — Feedback Consolidation
 
-**Agent role:** Dawa (Synthesizer)  **Model:** Sonnet
+**Agent role:** Synthesizer  **Model:** Sonnet
 
 Reads all structured solver reports from Step 3 (grouped by testing method) and produces a
 single consolidated feedback document. Reports are labelled by method and solver index
@@ -824,7 +824,7 @@ single-method findings of equal severity.
 
 # Step 5 — Debug and Clean
 
-**Agent role:** Ren (Debugger)  **Model:** Sonnet
+**Agent role:** Debugger  **Model:** Sonnet
 
 ## Input (iteration-aware)
 
@@ -863,7 +863,7 @@ The delta document is the sole input for the next debug iteration if the gate do
 
 # Step 6 — Review and Gate Check
 
-**Agent role:** Valentina (Comparator)  **Model:** Sonnet
+**Agent role:** Comparator  **Model:** Sonnet
 
 ## Part A — Better or Worse? (skipped on fast-path)
 
@@ -908,7 +908,7 @@ Required checks — all must pass:
 Gate decision:
 - **All checks pass:** proceed to Step 7.
 - **Any fail and iteration count < 5:** go back to Step 5. Append the gate failure record
-  to `debug/<feature-id>-delta-iter-<N>.md` so Ren reads it as part of the delta input.
+  to `debug/<feature-id>-delta-iter-<N>.md` so the Debugger reads it as part of the delta input.
 - **Any fail and iteration count = 5:** proceed to Step 7 with a convergence-failure flag.
 
 **Output:** Decision (accepted / reverted) + provenance record + gate check results (per criterion)
@@ -919,7 +919,7 @@ Gate decision:
 
 # Step 7 — Final Review Report
 
-**Agent role:** Marcus (Reviewer)  **Model:** Sonnet
+**Agent role:** Reviewer  **Model:** Sonnet
 
 Produces a self-contained report for the implemented feature covering:
 - **What was implemented** — API surface, annotations, DSL additions
@@ -935,7 +935,7 @@ Produces a self-contained report for the implemented feature covering:
 
 # Step 8 — Pipeline Meta-Review
 
-**Agent role:** Ebele (Meta-Reviewer — isolated, reads primary evidence only, makes no code changes)  **Model:** Opus
+**Agent role:** Meta-Reviewer (isolated, reads primary evidence only, makes no code changes)  **Model:** Opus
 
 ## Information Sources
 

@@ -1,6 +1,6 @@
 # Step 5 — Debug and Clean
 
-**Agent role:** Ren (Debugger)  **Model:** Sonnet
+**Agent role:** Debugger  **Model:** Sonnet
 
 ## Input (iteration-aware)
 

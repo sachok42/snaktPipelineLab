@@ -1,6 +1,6 @@
 # Step 0 — Feature Selection
 
-**Agent role:** Mira (Planner)  **Model:** Haiku
+**Agent role:** Planner  **Model:** Haiku
 
 Before starting, verify that the Orchestrator has provided an artifact repository root
 initialised by `tools/artifacts.py` and a repository context checked by the Repository

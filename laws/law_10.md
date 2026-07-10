@@ -1,6 +1,6 @@
 # Law 10 — Acquire Branch Lease Before Landing
 
-**Recipients:** Soren, Tomás, Yuki, Ren, Valentina, all solvers
+**Recipients:** Orchestrator, Repo Setup, Implementer, Debugger, Comparator, all solvers
 
 Obtain an exclusive lease from the Orchestrator before landing any commit to a branch.
 Hold the lease for the duration of your write, then return it.

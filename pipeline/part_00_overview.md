@@ -32,9 +32,9 @@ Step 8 → pipeline meta-review (raw transcripts only, urgency-tagged proposals)
 
 ## Runtime Model
 
-**Soren** (the Orchestrator) is the head LLM agent. Soren is responsible for spawning worker
+**The Orchestrator** is the head LLM agent. The Orchestrator is responsible for spawning worker
 LLM agents, tracking their handoffs, enforcing laws, and deciding whether to continue, pause,
-salvage, or respawn. The laws are operational instructions for Soren, not requirements for a
+salvage, or respawn. The laws are operational instructions for the Orchestrator, not requirements for a
 separate executable harness unless the operator provides one.
 
 ---
@@ -54,23 +54,23 @@ and the final report must state:
 Each step runs on a designated model tier. Using a heavier model than assigned is wasteful;
 using a lighter model than assigned is a briefing violation.
 
-| Step | Name | Role | Tier | Rationale |
-|------|------|------|------|-----------|
-| — | Soren | Orchestrator | — | Head agent; spawns, tracks, enforces |
-| 0 | Mira | Planner | Haiku | Clarification pass + oracle search + simple selection/decomposition |
-| 1 | Tomás | Repo Setup | Haiku | Mechanical — fork and record a URL |
-| 2 | Yuki | Implementer | Opus | Hard compiler/plugin generation |
-| 3 | Amara | Testing Strategist | Sonnet | Analysis + dispatch decisions |
-| 3 | *(method-specific)* | Solver (first per method) | Opus | Best chance of a correct baseline |
-| 3 | *(method-specific)* | Solver (second per method) | Sonnet | Find what Opus missed — not repeat it |
-| 3 | *(method-specific)* | Solver (third per method) | Sonnet | Adversarial third perspective |
-| 4 | Dawa | Synthesizer | Sonnet | Structured aggregation of solver reports |
-| 5 | Ren | Debugger | Sonnet | Targeted fixes from a defined issue list |
-| 6 | Valentina | Comparator | Sonnet | Comparison judgment + binary gate |
-| 7 | Marcus | Reviewer | Sonnet | Report writing from known artifacts |
-| 8 | Ebele | Meta-Reviewer | Opus | Deep judgment over all evidence |
+| Step | Role | Tier | Rationale |
+|------|------|------|-----------|
+| — | Orchestrator | — | Head agent; spawns, tracks, enforces |
+| 0 | Planner | Haiku | Clarification pass + oracle search + simple selection/decomposition |
+| 1 | Repo Setup | Haiku | Mechanical — fork and record a URL |
+| 2 | Implementer | Opus | Hard compiler/plugin generation |
+| 3 | Testing Strategist | Sonnet | Analysis + dispatch decisions |
+| 3 | Solver (first per method) | Opus | Best chance of a correct baseline |
+| 3 | Solver (second per method) | Sonnet | Find what Opus missed — not repeat it |
+| 3 | Solver (third per method) | Sonnet | Adversarial third perspective |
+| 4 | Synthesizer | Sonnet | Structured aggregation of solver reports |
+| 5 | Debugger | Sonnet | Targeted fixes from a defined issue list |
+| 6 | Comparator | Sonnet | Comparison judgment + binary gate |
+| 7 | Reviewer | Sonnet | Report writing from known artifacts |
+| 8 | Meta-Reviewer | Opus | Deep judgment over all evidence |
 
-Solver names vary by method (V, A, B, N, M) and slot index. See the canonical slug table in Law 17 for the complete roster.
+Solver slugs vary by method (V, A, B, N, M) and slot index. See the canonical slug table in Law 17 for the complete roster.
 
 ---
 

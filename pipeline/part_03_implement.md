@@ -1,6 +1,6 @@
 # Step 2 — Implement the Feature
 
-**Agent role:** Yuki (Implementer)  **Model:** Opus
+**Agent role:** Implementer  **Model:** Opus
 
 Implement the feature on the fork. This includes:
 - Compiler/plugin changes inside SnaKt as needed
@@ -17,7 +17,7 @@ repository at `surface/<feature-id>-api.md`. It must enumerate:
 - Every public function or DSL entry point added, with its signature
 - Any compiler/plugin behavior changes visible to callers
 
-This document is the authoritative input for Amara's (Testing Strategist) solver dispatch
+This document is the authoritative input for the Testing Strategist's solver dispatch
 in Step 3. Solvers must not be briefed without it.
 
 **Output:** Working implementation on the fork branch + `surface/<feature-id>-api.md`

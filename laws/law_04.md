@@ -1,6 +1,6 @@
 # Law 4 — Resurrect on Significant Problems
 
-**Recipients:** Ebele
+**Recipients:** Meta-Reviewer
 
 A problem is **significant** when it would change the agent's impact or quality rating — i.e. the finding changes the score that would otherwise be given.
 

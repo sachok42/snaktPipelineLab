@@ -1,6 +1,6 @@
 # Step 6 — Review and Gate Check
 
-**Agent role:** Valentina (Comparator)  **Model:** Sonnet
+**Agent role:** Comparator  **Model:** Sonnet
 
 ## Part A — Better or Worse? (skipped on fast-path)
 

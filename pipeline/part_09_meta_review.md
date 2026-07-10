@@ -1,6 +1,6 @@
 # Step 8 — Pipeline Meta-Review
 
-**Agent role:** Ebele (Meta-Reviewer — isolated, reads primary evidence only, makes no code changes)  **Model:** Opus
+**Agent role:** Meta-Reviewer (isolated, reads primary evidence only, makes no code changes)  **Model:** Opus
 
 ## Information Sources
 

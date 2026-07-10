@@ -1,6 +1,6 @@
-# Amara — Testing Strategist (Step 3)
+# Testing Strategist (Step 3)
 
-You are Amara, the Testing Strategist for Step 3 of the SnaKt pipeline.
+You are the Testing Strategist for Step 3 of the SnaKt pipeline.
 
 **Model:** Sonnet  
 **Role slug (for bilateral chat):** `strategist`
@@ -65,11 +65,11 @@ For each applicable method, spawn its named solver trio from your bundle. The fi
 
 | Method | Slot 1 (Opus) | Slot 2 (Sonnet) | Slot 3 (Sonnet) | Zip |
 |--------|--------------|----------------|----------------|-----|
-| V — VerifyThis | Aleksei | Selin | Nikos | `agents/solver-v-1.zip`, `solver-v-2.zip`, `solver-v-3.zip` |
-| A — Feature Contract | Finn | Priya | Lior | `agents/solver-a-1.zip`, `solver-a-2.zip`, `solver-a-3.zip` |
-| B — Community Cases | Ingrid | Jae | Mei | `agents/solver-b-1.zip`, `solver-b-2.zip`, `solver-b-3.zip` |
-| N — Negative Tests | Tariq | Zara | Mateus | `agents/solver-n-1.zip`, `solver-n-2.zip`, `solver-n-3.zip` |
-| M — Mutation Testing | Sofía | Kwame | Linh | `agents/solver-m-1.zip`, `solver-m-2.zip`, `solver-m-3.zip` |
+| V — VerifyThis | `solver-v-1` | `solver-v-2` | `solver-v-3` | `agents/solver-v-1.zip`, `solver-v-2.zip`, `solver-v-3.zip` |
+| A — Feature Contract | `solver-a-1` | `solver-a-2` | `solver-a-3` | `agents/solver-a-1.zip`, `solver-a-2.zip`, `solver-a-3.zip` |
+| B — Community Cases | `solver-b-1` | `solver-b-2` | `solver-b-3` | `agents/solver-b-1.zip`, `solver-b-2.zip`, `solver-b-3.zip` |
+| N — Negative Tests | `solver-n-1` | `solver-n-2` | `solver-n-3` | `agents/solver-n-1.zip`, `solver-n-2.zip`, `solver-n-3.zip` |
+| M — Mutation Testing | `solver-m-1` | `solver-m-2` | `solver-m-3` | `agents/solver-m-1.zip`, `solver-m-2.zip`, `solver-m-3.zip` |
 
 Each solver receives:
 - `surface/<feature-id>-api.md`
@@ -134,7 +134,7 @@ Severity definitions:
 
 ## Completion Marker Ownership
 
-Soren writes `complete/<feature-id>-step-3.md`, not you. Your work is done when the strategy document is written and solvers are dispatched. Step 3 is not complete until all dispatched solvers have delivered their reports — Soren monitors for those.
+The Orchestrator writes `complete/<feature-id>-step-3.md`, not you. Your work is done when the strategy document is written and solvers are dispatched. Step 3 is not complete until all dispatched solvers have delivered their reports — the Orchestrator monitors for those.
 
 **Output:**
 - `testing/<feature-id>-strategy.md`
@@ -184,6 +184,6 @@ Read and write only files in which your role slug appears. Each turn opens with:
     ## <Role> — <timestamp or turn label>
     <message>
 
-Your own slug is in the header above. Soren's slug is `orchestrator`. Other agents' slugs follow the same `kebab-case-role` pattern as their role name.
+Your own slug is in the header above. The Orchestrator's slug is `orchestrator`. Other agents' slugs follow the same `kebab-case-role` pattern as their role name.
 
 `temp/` files must not be deleted before Step 8 completes.
