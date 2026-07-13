@@ -12,7 +12,7 @@ Produce a self-contained report for the implemented feature covering: %% basic i
 - **Pros** — what the feature enables, which proof obligations it unlocks
 - **Cons / limitations** — known gaps, edge cases not handled, backend caveats
 - **Usage examples** — two or three concrete Kotlin snippets from the solver problems
-
+%% where to post results
 Write the report to the pipeline artifacts repository (not the feature branch) at `reviews/<feature-id>.md`.
 
 **Output:**

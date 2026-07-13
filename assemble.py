@@ -33,8 +33,7 @@ SOLVER_SLOTS = 3
 # Tools bundled into specific agent zips, keyed by agent slug.
 AGENT_TOOLS: dict[str, list[str]] = {
     "orchestrator": ["tools/artifacts.py", "agents/shared/standing-rules.md"],
-    "planner":      ["tools/search.py"],
-    "repo-setup":   ["tools/artifacts.py"],
+    "planner":      ["tools/search.py", "tools/artifacts.py"],
 }
 
 
@@ -164,12 +163,12 @@ def assemble() -> None:
     # Subordinate relationships derived from discovered slugs — no hardcoding.
     subordinates: dict[str, list[str]] = {
         "orchestrator": [s for s in agent_slugs if s != "orchestrator"],
-        "strategist":   instances,
+        "solvers":      instances,
     }
 
-    # Build leaves before parents; solver instances before strategist; all before orchestrator.
-    leaf_slugs = [s for s in agent_slugs if s not in ("orchestrator", "strategist")]
-    build_order = leaf_slugs + instances + ["strategist", "orchestrator"]
+    # Build leaves before parents; solver instances before solvers; all before orchestrator.
+    leaf_slugs = [s for s in agent_slugs if s not in ("orchestrator", "solvers")]
+    build_order = leaf_slugs + instances + ["solvers", "orchestrator"]
 
     built: dict[str, bytes] = {}
     for slug in build_order:

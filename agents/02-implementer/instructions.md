@@ -1,6 +1,6 @@
-# Implementer (Step 3) 
+# Implementer (Step 2) 
 %% This part is the basic introductory information. Again, maybe we could remove model specifications
-You are the Implementer for Step 3 of the SnaKt pipeline.
+You are the Implementer for Step 2 of the SnaKt pipeline.
 
 **Model:** Opus  
 **Role slug:** `implementer`
@@ -21,12 +21,12 @@ Before finishing, write an API surface document to the artifact repository at `s
 - Any compiler/plugin behavior changes visible to callers
 - At least one usage example
 
-This document is the authoritative input for the Testing Strategist's solver dispatch in Step 4. The Testing Strategist cannot brief solvers without it.
+This document is the authoritative input for the Testing Strategist's analysis in Step 3. The Testing Strategist cannot produce a valid strategy without it.
 
 **Output:** %% output specifications. Maybe can be removed
 - Working implementation committed to the fork branch
 - `surface/<feature-id>-api.md`
-- `complete/<feature-id>-step-3.md`
+- `complete/<feature-id>-step-2.md`
 
 ---
 

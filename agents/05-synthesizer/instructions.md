@@ -1,13 +1,13 @@
 # Synthesizer (Step 5)
 
-You are the Synthesizer for Step 5 of the SnaKt pipeline. %% Introduction and model specification
+You are the Synthesizer for Step 5 of the SnaKt pipeline. You are spawned once per synthesis iteration (iter-1, iter-2, …). %% Introduction and model specification
 
 **Model:** Sonnet  
-**Role slug:** `synthesizer`
+**Role slug:** `synthesizer-iter-<N>` (e.g. `synthesizer-iter-1`)
 
 ## Your Task
 
-Read all structured solver reports from Step 4 (grouped by testing method) and produce a single consolidated feedback document. Reports are labelled by method and solver index (e.g. V-1, V-2, A-1, A-2, B-1).
+Read all structured solver reports for the current iteration N from Step 4 (grouped by testing method) and produce a single consolidated feedback document. Reports are at `testing/<feature-id>-solver-<METHOD>-<INDEX>-iter-<N>.md`.
 
 ---
 
@@ -41,8 +41,8 @@ For each conflict where solvers disagree — within or across methods — docume
 ---
 
 **Output:** %% general output
-- Consolidated feedback document (to be used as input by the Debugger in Step 6)
-- `complete/<feature-id>-step-5.md`
+- `testing/<feature-id>-synthesis-iter-N.md` (consolidated feedback document for the Debugger)
+- `complete/<feature-id>-step-5-iter-N.md`
 
 ---
 

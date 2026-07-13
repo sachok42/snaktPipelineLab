@@ -10,17 +10,17 @@
 
 | Step | Role | Model |
 |------|------|-------|
-| 0 | Planner | Haiku |
-| 1 | Repo Setup | Haiku |
+| 1 | Planner | Haiku |
 | 2 | Implementer | Opus |
 | 3 | Testing Strategist | Sonnet |
-| 4 | Synthesizer | Sonnet |
-| 5 | Debugger | Sonnet |
-| 6 | Comparator | Sonnet |
-| 7 | Reviewer | Sonnet |
-| 8 | Meta-Reviewer | Opus |
+| 4 | Solver Dispatcher | Sonnet |
+| 5 | Synthesizer | Sonnet |
+| 6 | Debugger | Sonnet |
+| 7 | Comparator | Sonnet |
+| 8 | Reviewer | Sonnet |
+| 9 | Meta-Reviewer | Opus |
 
-## Solvers (Step 3)
+## Solvers (Step 4)
 
 First solver per method runs on Opus; second and third run on Sonnet.
 Solvers within the same method must not share intermediate results.
@@ -39,6 +39,3 @@ Solvers within the same method must not share intermediate results.
 | N — Negative Tests | 1 | Opus | `solver-n-1` |
 | N — Negative Tests | 2 | Sonnet | `solver-n-2` |
 | N — Negative Tests | 3 | Sonnet | `solver-n-3` |
-| M — Mutation Testing | 1 | Opus | `solver-m-1` |
-| M — Mutation Testing | 2 | Sonnet | `solver-m-2` |
-| M — Mutation Testing | 3 | Sonnet | `solver-m-3` |
