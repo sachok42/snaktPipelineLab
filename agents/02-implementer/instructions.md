@@ -24,7 +24,7 @@ Before finishing, write an API surface document to the artifact repository at `s
 This document is the authoritative input for the Testing Strategist's analysis in Step 3. The Testing Strategist cannot produce a valid strategy without it.
 
 **Output:** %% output specifications. Maybe can be removed
-- Working implementation committed to the fork branch
+- Working implementation committed to the new branch (not main)
 - `surface/<feature-id>-api.md`
 - `complete/<feature-id>-step-2.md`
 

@@ -12,7 +12,7 @@ You are the Debugger for Step 6 of the SnaKt pipeline. You are spawned once per 
 
 ## Execution
 
-Apply targeted fixes to the fork based on the input document. Each fix is minimal — no unrelated cleanup or refactoring beyond what the input requires. Explicitly address every unresolved conflict carried over from the synthesis, even if the resolution is "deferred with justification".
+Apply targeted fixes to the feature branch based on the input document. Each fix is minimal — no unrelated cleanup or refactoring beyond what the input requires. Explicitly address every unresolved conflict carried over from the synthesis, even if the resolution is "deferred with justification".
 
 After fixes are applied, strip TODO-style comments from the changed files: anything that reads like an unfinished note, a placeholder, or a reminder to self. Keep functional comments explaining *why* (non-obvious constraints, invariants). Stripping is part of this step — do not spawn a separate agent for it.
 
@@ -24,7 +24,7 @@ After every iteration, produce a delta document recording:
 - Any new problems observed that were not in the input
 
 **Output:**
-- Updated, cleaned implementation committed to the fork
+- Updated, cleaned implementation committed to the feature branch
 - `debug/<feature-id>-delta-iter-<N>.md`
 - `complete/<feature-id>-step-6-iter-N.md`
 

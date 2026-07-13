@@ -18,7 +18,7 @@ You receive from the Solver Dispatcher:
 %% working order
 1. Read the API surface document.
 2. For each community case, write a program that reproduces the reported limitation and demonstrates that the new feature resolves it.
-3. Commit every attempt to the fork — verified or not. Mark non-verifying attempts `[UNVERIFIED]`.
+3. Commit every attempt to the feature branch — verified or not. Mark non-verifying attempts `[UNVERIFIED]`.
 4. Write your report at the designated output path specified in your method brief, using the report requirements in your brief.
 %% non sharing
 Work independently. Do not share intermediate results with the other Method B solvers.

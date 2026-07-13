@@ -138,7 +138,7 @@ valid lease is a law violation regardless of whether the commits conflict.
 No work product produced during a pipeline run may be deleted unless a verified replacement
 is already in place. This applies to all agents and all artifact types.
 
-For solvers specifically: every attempt must be committed to the fork — including
+For solvers specifically: every attempt must be committed to the feature branch — including
 non-verifying ones — marked `[UNVERIFIED]`. Deleting a failed spec before committing it
 is a violation regardless of how broken the spec is.
 
@@ -321,7 +321,7 @@ Every step is handled by a **dedicated agent**. No agent doubles up on steps.
 ```
 Before Step 0 → bind and initialise artifact repository; bind or request execution repository
 Step 0 → receive feature brief → ask/resolve unclear points → oracle search → select community cases / split into pieces
-Step 1 → fork the repository
+Step 1 → create the feature branch
 Step 2 → implement + publish API surface doc
 Step 3 → testing strategist selects ≥2 methods; dispatch phase 1 (V/A/B/N), then phase 2 (M after baseline)
 Step 4 → consolidate feedback (per-method calibration + cross-method synthesis)
@@ -361,7 +361,7 @@ using a lighter model than assigned is a briefing violation.
 |------|------|------|-----------|
 | — | Orchestrator | — | Head agent; spawns, tracks, enforces |
 | 0 | Planner | Haiku | Clarification pass + oracle search + simple selection/decomposition |
-| 1 | Repo Setup | Haiku | Mechanical — fork and record a URL |
+| 1 | Repo Setup | Haiku | Mechanical — create the feature branch and record a reference |
 | 2 | Implementer | Opus | Hard compiler/plugin generation |
 | 3 | Testing Strategist | Sonnet | Analysis + dispatch decisions |
 | 3 | Solver (first per method) | Opus | Best chance of a correct baseline |
@@ -409,7 +409,7 @@ python tools/artifacts.py init --root "<artifact-repo-path>"
 ```
 
 All artifact paths in this document are relative to that root. The artifact root must be
-included in every handoff record. Once Step 1 has created the feature fork, Repo Setup must
+included in every handoff record. Once Step 1 has created the feature branch, Repo Setup must
 validate that artifacts are outside the feature repository:
 
 ```
@@ -419,7 +419,7 @@ python tools/artifacts.py validate --root "<artifact-repo-path>" --feature-repo 
 ## Repository Preflight
 
 Before Step 0 starts, the Orchestrator must bind the repository context that the pipeline
-will operate on. If the operator has not provided an existing SnaKt repository path or fork
+will operate on. If the operator has not provided an existing SnaKt repository path or branch
 source, the Orchestrator asks for it before proceeding.
 
 When a local repository path is provided, the Orchestrator checks:
@@ -430,7 +430,7 @@ git -C "<repo-path>" rev-parse --is-inside-work-tree
 
 If the path is not a git repository, the Orchestrator must ask the operator whether to:
 - provide a different repository path,
-- clone/fork from a remote URL, or
+- clone from a remote URL, or
 - initialise the provided directory with `git init`.
 
 The Orchestrator must not run `git init` silently. The question, answer, and chosen action
@@ -534,12 +534,12 @@ contract in real usage patterns.
 
 ---
 
-# Step 1 — Fork Repository
+# Step 1 — Create Feature Branch
 
 **Agent role:** Repo Setup  **Model:** Haiku
 
-Create a fork of the SnaKt repository that will hold this feature's implementation.
-All subsequent code changes land on this fork, not the main repo.
+Create a feature branch in the SnaKt repository that will hold this feature's implementation.
+All subsequent code changes land on this branch, not main.
 
 After creating or selecting the local feature repository, verify it is a git repository:
 
@@ -550,14 +550,14 @@ git -C "<feature-repo-path>" rev-parse --is-inside-work-tree
 If this fails, ask the operator for a corrected repository path or explicit permission to
 run `git init` in the provided directory. Do not initialise git silently.
 
-After the fork/local branch exists, validate that the artifact repository root is not inside
+After the feature branch exists, validate that the artifact repository root is not inside
 the feature repository:
 
 ```
 python tools/artifacts.py validate --root "<artifact-repo-path>" --feature-repo "<feature-repo-path>"
 ```
 
-**Output:** Fork URL / local branch reference + artifact repository validation result
+**Output:** Feature branch reference + artifact repository validation result
 + handoff record (`handoffs/<feature-id>-step-1.md`)
 + completion marker (`complete/<feature-id>-step-1.md`).
 
@@ -567,7 +567,7 @@ python tools/artifacts.py validate --root "<artifact-repo-path>" --feature-repo 
 
 **Agent role:** Implementer  **Model:** Opus
 
-Implement the feature on the fork. This includes:
+Implement the feature on the feature branch. This includes:
 - Compiler/plugin changes inside SnaKt as needed
 - New Kotlin contract API surface (annotations, functions, DSL blocks)
 - At minimum one working usage example
@@ -585,7 +585,7 @@ repository at `surface/<feature-id>-api.md`. It must enumerate:
 This document is the authoritative input for the Testing Strategist's solver dispatch
 in Step 3. Solvers must not be briefed without it.
 
-**Output:** Working implementation on the fork branch + `surface/<feature-id>-api.md`
+**Output:** Working implementation on the feature branch + `surface/<feature-id>-api.md`
 + handoff record (`handoffs/<feature-id>-step-2.md`)
 + completion marker (`complete/<feature-id>-step-2.md`).
 
@@ -708,7 +708,7 @@ Method M solvers run only in Phase 2 after a baseline is confirmed.
 
 ## Commit Policy
 
-All solver agents must commit every attempt to the fork — including non-verifying ones —
+All solver agents must commit every attempt to the feature branch — including non-verifying ones —
 marked `[UNVERIFIED]`. Deleting a failed spec before committing is a briefing violation (Law 12).
 
 ## Solver Report Schema
@@ -831,11 +831,11 @@ single-method findings of equal severity.
 - **Iteration 1:** read the consolidated feedback from Step 4.
 - **Iteration 2+:** read `debug/<feature-id>-delta-iter-<N-1>.md` — the delta document
   produced by the previous Step 5 iteration. Do not re-read the original Step 4
-  consolidation — it describes the original implementation, not the current state of the fork.
+  consolidation — it describes the original implementation, not the current state of the feature branch.
 
 ## Execution
 
-Apply targeted fixes to the fork based on the input document.
+Apply targeted fixes to the feature branch based on the input document.
 Each fix is minimal — no unrelated cleanup or refactoring beyond what the input requires.
 Unresolved conflicts carried over from Step 4 must be explicitly addressed (even if the
 resolution is "deferred with justification").
@@ -854,7 +854,7 @@ After every iteration, produce a delta document recording:
 
 The delta document is the sole input for the next debug iteration if the gate does not pass.
 
-**Output:** Updated, cleaned implementation committed to the fork
+**Output:** Updated, cleaned implementation committed to the feature branch
 + delta document written to `debug/<feature-id>-delta-iter-<N>.md`
 + handoff record (`handoffs/<feature-id>-step-5-iter-N.md`)
 + completion marker (`complete/<feature-id>-step-5-iter-N.md`).
@@ -873,7 +873,7 @@ Part A is only required when at least one criterion fails and a revert decision 
 
 When Part A runs: compares the post-debug implementation against the pre-debug version.
 Decides which is strictly better. If the debugged version is better, it becomes the
-new main version on the fork. If not, the pre-debug version is restored.
+new main version on the feature branch. If not, the pre-debug version is restored.
 
 ## Part B — Artifact Provenance
 
