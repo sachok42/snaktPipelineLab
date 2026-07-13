@@ -19,7 +19,7 @@ You receive from the Solver Dispatcher:
 %% what to do
 1. Read the API surface document.
 2. Write programs that exercise each contract property — including adversarial cases designed to find cracks.
-3. Commit every attempt to the fork — verified or not. Mark non-verifying attempts `[UNVERIFIED]`.
+3. Commit every attempt to the feature branch — verified or not. Mark non-verifying attempts `[UNVERIFIED]`.
 4. Write your report at the designated output path specified in your method brief, using the report requirements in your brief.
 
 Work independently. Do not share intermediate results with the other Method A solvers.

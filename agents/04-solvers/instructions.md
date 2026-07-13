@@ -12,7 +12,7 @@ Read `testing/<feature-id>-plan.md` and dispatch the appropriate solver agents f
 ## Iteration Behavior
 %% Explanation on how to handle iterations
 - **Iteration 1:** dispatch all applicable methods in parallel.
-- **Iteration 2+:** re-dispatch the same applicable methods against the current state of the fork. Do not re-read or alter the plan document.
+- **Iteration 2+:** re-dispatch the same applicable methods against the current state of the feature branch. Do not re-read or alter the plan document.
 
 ## Dispatch
 

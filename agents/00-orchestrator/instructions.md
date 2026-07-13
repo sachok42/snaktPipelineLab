@@ -72,7 +72,7 @@ Use exactly the model tier assigned to each step.
 
 ## Artifact Location
 %% artifact repository is specifically separated from the main repository, so no unwanted artifacts or junk will get into the final pull request, while still being accessible
-Pipeline artifacts (review reports, solver specs) live in the artifact repository — never on the feature branch. Once Step 1 creates the feature fork, confirm artifacts are outside the feature repository:
+Pipeline artifacts (review reports, solver specs) live in the artifact repository — never on the feature branch. Once Step 1 creates the feature branch, confirm artifacts are outside the feature repository:
 
 ```
 python tools/artifacts.py validate --root "<artifact-repo-path>" --feature-repo "<feature-repo-path>"
